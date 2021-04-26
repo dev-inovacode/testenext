@@ -6,7 +6,7 @@ frontend:
         - yarn install --no-optional
     build:
       commands:
-        - npm run build
+        - yarn run build
   artifacts:
     baseDirectory: out
     files:
