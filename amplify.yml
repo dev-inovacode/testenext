@@ -3,7 +3,6 @@ frontend:
   phases:
     preBuild:
       commands:
-        - npm install create-next-app
         - yarn add --no-optional
     build:
       commands:
