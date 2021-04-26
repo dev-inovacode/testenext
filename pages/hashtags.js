@@ -10,8 +10,8 @@ import {FaUser, FaSlackHash} from 'react-icons/fa'
 
 import Logo from "../assets/logo-small.png"
 
-import {dbConnect, jsonify} from './middleware/db'
-import Hashtag from './models/QuestionsSchemas'
+import {dbConnect, jsonify} from '../services/middleware/db'
+import Hashtag from '../services/models/QuestionsSchemas'
 
 export async function getServerSideProps(context) {
     dbConnect()
