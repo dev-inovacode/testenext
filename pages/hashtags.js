@@ -8,8 +8,6 @@ import {AiFillHome} from 'react-icons/ai'
 import {BiLogOut} from 'react-icons/bi'
 import {FaUser, FaSlackHash} from 'react-icons/fa'
 
-import Logo from "../assets/logo-small.png"
-
 import {dbConnect, jsonify} from '../services/middleware/db'
 import Hashtag from '../services/models/QuestionsSchemas'
 
@@ -192,7 +190,7 @@ function Categorias({hashtags}) {
             </Head>
             <div className="menu">
                 <div>
-                    <img src={Logo} alt="Logo"/>
+                    <img src="/logo-small.png" alt="Logo"/>
                     <p>InovaSup</p>
                 </div>
                 <ul>
