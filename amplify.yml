@@ -7,7 +7,7 @@ frontend:
         - yarn add --no-optional
     build:
       commands:
-        - next build && next export
+        - npm run-script build
   artifacts:
     baseDirectory: build
     files:
