@@ -99,7 +99,7 @@ function Categorias() {
                         <div className="list">
                             <table id="hashList">
                                 <tbody>
-                                    {getServerSideProps().filter((item) => {
+                                    {items.filter((item) => {
                                         if(
                                             (number === '*' || number === item.number) &&
                                             (group === '*' || group === item.group) &&
