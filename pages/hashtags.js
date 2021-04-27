@@ -27,7 +27,7 @@ function Categorias() {
     
     const history = useRouter()
     
-    async function getServerSideProps(context) {
+    async function getServerSideProps() {
         await dbConnect()
         const hashtags = await Hashtag.find({}).exec()
       
