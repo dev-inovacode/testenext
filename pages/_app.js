@@ -1,5 +1,5 @@
 import '../styles/globals.css'
-import {dbConnect} from './middleware/db'
+import {dbConnect} from '../services/middleware/db'
 
 function MyApp({ Component, pageProps }) {
   async function getServerSideProps(context) {
