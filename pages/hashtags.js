@@ -11,6 +11,13 @@ import {FaUser, FaSlackHash} from 'react-icons/fa'
 import {dbConnect, jsonify} from '../services/middleware/db'
 import Hashtag from '../services/models/QuestionsSchemas'
 
+async function getServerSideProps(context) {
+    dbConnect()
+    const hashtags = await Hashtag.find({}).exec()
+  
+    return jsonify(hashtags)
+   
+}
 
 function Categorias() {
     const [items, setItems] = useState([])
@@ -24,17 +31,13 @@ function Categorias() {
     const [groupsList, setGroupsList] = useState([])
     const [key, setKey] = useState(0)
     const [itemDetail, setItemDetail] = useState({})
-    
+
     const history = useRouter()
-    
-    async function getServerSideProps() {
-        await dbConnect()
-        const hashtags = await Hashtag.find({}).exec()
-      
-        return jsonify(hashtags)
-       
-    }
-    
+
+    useEffect(()=> {
+        setItems(getServerSideProps())
+    }, [])
+
     function redirect(url) {
         const pages = [
             '/profile',
