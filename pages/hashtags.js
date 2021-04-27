@@ -27,13 +27,6 @@ function Categorias() {
     
     const history = useRouter()
     
-    useEffect(()=> {
-        setTimeout(() => {
-            setItems(getServerSideProps())
-        }, 500)
-        setItems(getServerSideProps())
-    }, [])
-    
     async function getServerSideProps(context) {
         await dbConnect()
         const hashtags = await Hashtag.find({}).exec()
@@ -106,7 +99,7 @@ function Categorias() {
                         <div className="list">
                             <table id="hashList">
                                 <tbody>
-                                    {items.filter((item) => {
+                                    {getServerSideProps().filter((item) => {
                                         if(
                                             (number === '*' || number === item.number) &&
                                             (group === '*' || group === item.group) &&
