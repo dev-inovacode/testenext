@@ -12,14 +12,14 @@ import {dbConnect, jsonify} from '../services/middleware/db'
 import Hashtag from '../services/models/QuestionsSchemas'
 
 async function getServerSideProps(context) {
-    dbConnect()
+    await dbConnect()
     const hashtags = await Hashtag.find({}).exec()
   
     return jsonify(hashtags)
    
 }
 
-function Categorias({hashtags}) {
+function Categorias() {
     const [items, setItems] = useState([])
     const [sugest, setSugest] = useState('')
     const [hashtag, setHashtag] = useState('*')
