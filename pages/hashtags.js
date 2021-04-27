@@ -8,8 +8,8 @@ import {AiFillHome} from 'react-icons/ai'
 import {BiLogOut} from 'react-icons/bi'
 import {FaUser, FaSlackHash} from 'react-icons/fa'
 
-import {dbConnect, jsonify} from '../services/middleware/db'
-import Hashtag from '../services/models/QuestionsSchemas'
+import {dbConnect, jsonify} from './middleware/db'
+import Hashtag from './models/QuestionsSchemas'
 
 
 function Categorias() {
