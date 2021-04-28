@@ -30,7 +30,7 @@ function Categorias() {
     }, [])
 
     function getItems() {
-        axios.get('/api/dbGet').then(
+        axios.get('/api/test').then(
             response => {
                 setItems(response.data)
             }
