@@ -1,4 +1,4 @@
-import {MongoClient} from 'mongodb'
+import {MongoClient, Db} from 'mongodb'
 import url from 'url'
 
 let cacheDb = null
@@ -27,7 +27,7 @@ export default async (request, response) => {
 
   const collection = db.collection('questionsschemas')
 
-  const itemsList = await collection.find({})
+  const itemsList = await collection.find()
 
-  response.json(itemsList)
+  response.json(itemlist)
 }

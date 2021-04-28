@@ -26,12 +26,16 @@ function Categorias() {
     const history = useRouter()
 
     useEffect(()=> {
+        getItems()
+    }, [])
+
+    function getItems() {
         axios.get('/api/dbGet').then(
             response => {
                 setItems(response.data)
             }
         )
-    }, [])
+    }
 
     function redirect(url) {
         const pages = [
