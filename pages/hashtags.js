@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import {useState, useEffect} from 'react'
+import axios from   'axios'
 
 import {useRouter} from 'next/router'
 
@@ -8,16 +9,6 @@ import {AiFillHome} from 'react-icons/ai'
 import {BiLogOut} from 'react-icons/bi'
 import {FaUser, FaSlackHash} from 'react-icons/fa'
 
-import {dbConnect, jsonify} from '../services/middleware/db'
-import Hashtag from '../services/models/QuestionsSchemas'
-
-async function getServerSideProps(context) {
-    dbConnect()
-    const hashtags = await Hashtag.find({}).exec()
-  
-    return jsonify(hashtags)
-   
-}
 
 function Categorias() {
     const [items, setItems] = useState([])
@@ -35,7 +26,11 @@ function Categorias() {
     const history = useRouter()
 
     useEffect(()=> {
-        setItems(getServerSideProps())
+        axios.get('/api/dbGet').then(
+            response => {
+                setItems(response.data)
+            }
+        )
     }, [])
 
     function redirect(url) {
