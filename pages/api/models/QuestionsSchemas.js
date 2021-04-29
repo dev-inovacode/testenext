@@ -14,7 +14,7 @@ const schema = new Schema({
     responsible: {type: String, ref: 'usersschemas'},
     date_ans: {type: String, default: ''},
     likes: {type: Array, default: []},
-    priority: {type: String},
+    priority: {type: String, default: 'baixa'},
     __v: {type: Number, default: 0}
 }, {
     timestamps: true
