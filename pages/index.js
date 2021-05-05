@@ -1,11 +1,12 @@
 import Head from 'next/head'
+import Cookie from 'js-cookie'
 import {useState, useEffect} from 'react'
 import axios from 'axios'
 
 import {TiArrowBack} from 'react-icons/ti'
-import {BiLogOut} from 'react-icons/bi'
-import {FaUser, FaSlackHash} from 'react-icons/fa'
+import Menu from './components/Menu'
 import {useRouter} from 'next/router'
+
 
 function Hashtags() {
     const [items, setItems] = useState([])
@@ -19,8 +20,15 @@ function Hashtags() {
     const [groupsList, setGroupsList] = useState([])
     const [key, setKey] = useState(0)
     const [itemDetail, setItemDetail] = useState({})
-
+    
     const history = useRouter()
+    
+    useEffect(() => {
+        if(!(Cookie.get('userId'))) {
+            Cookie.set('userId', 'client')
+        }
+    }, [])
+
 
     useEffect(()=> {
         getTags()
@@ -238,15 +246,7 @@ function Hashtags() {
             <Head>
                 <title>Hashtags</title>
             </Head>
-            <div className="menu">
-                <div>
-                    <img src="/logo-small.png" alt="Logo"/>
-                    <p>InovaSup</p>
-                </div>
-                <ul>
-                    <li onClick={e => (redirect(e.target.value))} value="1"><FaSlackHash className="icons"/> Hashtags</li>
-                </ul>
-            </div>
+            <Menu/>
             <div id="background">
                 {showDetails()}
             </div>

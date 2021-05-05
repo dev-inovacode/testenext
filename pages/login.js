@@ -1,6 +1,7 @@
 import Head from 'next/head'
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import axios from 'axios'
+import Cookie from 'js-cookie'
 import {useRouter} from 'next/router'
 import InputMask from 'react-input-mask'
 
@@ -17,6 +18,12 @@ function Login() {
     
     const history = useRouter()
 
+    useEffect(()=> {
+        if((Cookie.get('userId') && Cookie.get('userId') != 'client')) {
+            history.push('/')
+        }
+    }, [])
+
     function Log(){
         let options = {
             headers: {
@@ -28,8 +35,8 @@ function Login() {
             axios.post(`/api/users/login`, {userLogin: userLogin, passLogin: passLogin}, options).then(
                 response => {
                     if(response.data && response.data.username === userLogin) {
-                      sessionStorage.setItem('userId', response.data._id)
-                      history.push('/')
+                        Cookie.set('userId', response.data._id)
+                        history.push('/')
                     }else{
                         window.alert('Usuario ou senha incorretos')
                     }
@@ -43,7 +50,7 @@ function Login() {
         }
     }
 
-    async function Reg(){
+    function Reg(){
         if(usernameRegister === '') {
           window.alert("Ops... \nFaltou informar o Nome de Usuário!")
         } else if(nameRegister === '') {
@@ -74,11 +81,12 @@ function Login() {
                 }
             }
 
-            await api.post('/api/users/register', reg, options
+            axios.post('/api/users/register', reg, options
             ).then(
                 response => {
-                    localStorage.setItem('userId', response.data._id)
+                    Cookie.set('userId', response.data._id)
                     window.alert(`Usuário ${response.data.username} cadastrado!`)
+                    history.push('/')
                 },
                 response => {
                     window.alert(`Opa...\nTemos um problema!\n${response.data.error}`)
