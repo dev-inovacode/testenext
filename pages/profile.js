@@ -4,7 +4,6 @@ import {useRouter} from 'next/router'
 import Cookie from 'js-cookie'
 
 import Menu from './components/Menu'
-import Dashboard from './components/Dashboard'
 import axios from 'axios'
 
 function Profile() {
