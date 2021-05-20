@@ -7,8 +7,6 @@ import { useEffect, useState } from 'react'
 
 function Dashboards() {
     const [week, setWeek] = useState([])
-    const [lista, setLista] = useState([[12, 36, 55, 25, 35, 10, 40], [10, 20, 30, 40, 50, 40, 30]])
-    const [i, setI] = useState(false)
     useEffect(() => {
         axios.get('/api/dash/weekResume').then(
             response => {
