@@ -11,7 +11,7 @@ import {useRouter} from 'next/router'
 function Hashtags() {
     const [items, setItems] = useState([])
     const [sugest, setSugest] = useState('')
-    const [hashtag, setHashtag] = useState('#*')
+    const [hashtag, setHashtag] = useState('#FAQ')
     const [hashtagsList, setHashtagsList] = useState([])
     const [searchText, setSearchText] = useState('')
     const [number, setNumber] = useState('*')
@@ -157,9 +157,9 @@ function Hashtags() {
                                             </td>
                                             <td>
                                                 <label>Data</label>
-                                                <div>{item.date.split(' ')[0]}</div>
+                                                <div>{item.date}</div>
                                                 <label>Horário</label>
-                                                <div>{item.date.split(' ')[1]}</div>
+                                                <div>{item.hour}</div>
                                             </td>
                                         </tr>
                                     ))}

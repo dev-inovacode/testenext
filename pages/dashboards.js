@@ -1,16 +1,19 @@
 import Head from 'next/head'
 import Menu from './components/Menu'
-import Dashboard from './components/Dashboard'
-import ChartLine from './components/ChartLine'
+import ChartText from './components/chart'
+import Teste from './components/teste'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 
 function Dashboards() {
     const [week, setWeek] = useState([])
+    const [lista, setLista] = useState([[12, 36, 55, 25, 35, 10, 40], [10, 20, 30, 40, 50, 40, 30]])
+    const [i, setI] = useState(false)
     useEffect(() => {
         axios.get('/api/dash/weekResume').then(
             response => {
                 setWeek(response.data)
+                console.log(response.data)
             }
         )
     }, [])
@@ -24,11 +27,14 @@ function Dashboards() {
             <div id="background">
                 <div className="contentContainer">
                     <div className="title">
-                        <h1>Dashboards</h1>
+                        <h1 onClick={e => {setI(!i)
+                        console.log(i ? lista[0] : lista[1])}}>Dashboards</h1>
                     </div>
                     <div style={{marginTop: '20px'}}>
-                        <Dashboard data={[12, 36, 55, 25, 35, 10, 40]} width={500} height={400} color={'blue'}/>
-                        <ChartLine dataa={week}  width={500} height={400}/>
+                       <ChartText data={week} largura={1000}/>
+                    </div>
+                    <div style={{marginTop: '20px'}}>
+                       <Teste data={week}/>
                     </div>
                 </div>
             </div>

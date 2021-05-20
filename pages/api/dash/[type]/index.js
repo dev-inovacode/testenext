@@ -17,7 +17,7 @@ export default async (request, response) => {
 
             let weekResume = []
 
-            for(let i = 0; i < 15; i++) {
+            for(let i = 40; i < 50; i++) {
                 let dt = new Date()
                 dt.setHours(dt.getHours() - 3)
                 dt.setDate(dt.getDate() - i)
@@ -27,10 +27,10 @@ export default async (request, response) => {
                     if(item.date.search(dt_reg) > -1){return item}
                 }).length
 
-                weekResume.push({date: dt, value: qtd})
+                weekResume.push({date: dt_reg, value: qtd})
             }
 
-            response.json(weekResume)
+            response.json(weekResume.reverse())
             break
 
         case value:
