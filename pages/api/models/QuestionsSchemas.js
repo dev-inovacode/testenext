@@ -9,10 +9,12 @@ const schema = new Schema({
     number: {type: String},
     group: {type: String},
     date: {type: String},
+    hour: {type: String},
     type: {type: String},
     status: {type: String, default: 'aberto'},
     responsible: {type: String, ref: 'usersschemas'},
     date_ans: {type: String, default: ''},
+    hour_ans: {type: String, default: ''},
     likes: {type: Array, default: []},
     priority: {type: String, default: 'baixa'},
     __v: {type: Number, default: 0}

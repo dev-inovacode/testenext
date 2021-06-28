@@ -43,7 +43,7 @@ ul {
 
 .menu li  ul{
     position:absolute;
-    background-color: #A33BBF;
+    background-color: #8C0B3B;
     top:450px;
     left:0px;
     margin-left: 20px;
@@ -60,7 +60,7 @@ ul {
 }
 
 .menu li ul li:hover {
-    background-color: #8C2EA6;
+    background-color: #730930;
 }
 
 .export {
@@ -120,7 +120,7 @@ ul {
 
 .menu li:hover {
     color: #FFF;
-    background-color: #A33BBF;
+    background-color: #8C0B3B;
 }
 
 .mainContainer {
@@ -174,7 +174,7 @@ p {
     border-radius: 5px;
     padding: 20px;
     margin-top: -45px;
-    background-color: #A33BBF;
+    background-color: #8C0B3B;
     box-shadow: 2px 2px 5px #3B3C40;
     display: flex;
     flex-direction: row;
@@ -196,7 +196,7 @@ p {
 }
 
 button {
-    background-color: #B17EBF;
+    background-color: #919191;
     cursor: pointer;
 }
 
@@ -217,6 +217,20 @@ label {
     font-size: 12px;
     margin-bottom: 5px;
     margin-top: 10px;
+}
+
+textarea {
+    border-radius: 4px;
+    border: 1px solid rgb(221, 221, 221);
+    box-shadow: none;
+    padding: 10px;
+    outline: none;
+    margin: 0;
+    background: #FFF;
+    cursor: pointer;
+    box-sizing: border-box;
+    width:100%;
+    resize:vertical;
 }
 
 select, input {
@@ -277,8 +291,8 @@ select, input {
     width: auto;
 }
 
-select:focus, input:focus {
-    border-color: #A33BBF;
+select:focus, input:focus, textarea:focus {
+    border-color: #8C0B3B;
 }
 
 .list {
@@ -305,20 +319,20 @@ tr {
 tr#header {
     background-color: rgb(250, 250, 250);
     border-bottom: none;
-    color: #8C2EA6;
+    color: #730930;
 }
 
-td {
+th {
     padding: 15px 5px;
     text-align: left;
     font-size: 15px;
-    font-weight: 100;
+    font-weight: 500;
     padding-left: 20px;
     padding-right: 20px;
     vertical-align: top;
 }
 
-td label {
+th label {
     font-weight: bold;
 }
 
@@ -379,11 +393,11 @@ td label {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #B17EBF; 
+    background: #919191; 
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #8C2EA6; 
+    background: #730930; 
   }
 
 @media only screen and (max-width: 800px) {
@@ -511,7 +525,7 @@ td label {
 }
 
 table#hashList tr:hover {
-  background-color: #B17EBF;
+  background-color: #919191;
   color: #F8F8F8;
   cursor: pointer;
 }
@@ -612,21 +626,21 @@ button {
 }
 
 button#bl {
-  background: #8C2EA6;
+  background: #730930;
   width: 100px;
 }
 
 button#bc {
-  background: #8C2EA6;
+  background: #730930;
   width: 120px;
 }
 
 button#bl:hover {
-  background: #A33BBF;
+  background: #8C0B3B;
 }
 
 button#bc:hover {
-  background-color: #A33BBF;
+  background-color: #8C0B3B;
 }
 
 @media only screen and (max-width: 750px) {
@@ -694,7 +708,7 @@ button#bc:hover {
 }
 
 .hashtags .hashtagsContent div {
-  background-color: #B17EBF;
+  background-color: #919191;
   box-shadow: 2px 2px 5px #3B3C40;
   padding: 20px;
   margin: 10px;
@@ -708,7 +722,7 @@ button#bc:hover {
 
 .hashtags .hashtagsContent div:hover {
   transition: 0.5s;
-  background-color: #A33BBF
+  background-color: #8C0B3B
 }
 
 .sugestion {
@@ -740,7 +754,7 @@ button#bc:hover {
 
 .sugestion div button:hover{
   transition: 0.5s;
-  background-color: #A33BBF
+  background-color: #8C0B3B
 }
 
 @media only screen and (max-width: 570px) {

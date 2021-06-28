@@ -1,11 +1,11 @@
 import {Types} from 'mongoose'
 import dbConnect from '../dbConnect'
-import Questions from '../models/QuestionsSchemas'
+import Activitys from '../models/ActivitysSchemas'
 
 export default async (request, response) => {
     dbConnect()
 
-    const {sugestion} = request.body
+    const {name, activity} = request.body
 
     let dt = new Date()
     dt.setHours(dt.getHours() - 3)
@@ -13,15 +13,12 @@ export default async (request, response) => {
     let hr_reg = ("0" + dt.getHours()).slice(-2) + ":" + ("0" +dt.getMinutes()).slice(-2)
     //para para deploy na vercel atraso de 3 horas
 
-    const itemsList = await Questions.create({
+    const itemsList = await Activitys.create({
         _id: new Types.ObjectId,
-        answer: '',
-        number: 'BO',
-        question: sugestion,
-        group: 'BO',
+        name: name,
+        activity: activity,
         date: dt_reg,
         hour: hr_reg,
-        type: 'SUGESTAO',
         __v: 0
     })
 

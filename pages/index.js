@@ -4,6 +4,8 @@ import {useState, useEffect} from 'react'
 import axios from 'axios'
 
 import {TiArrowBack} from 'react-icons/ti'
+import {FaHeart} from 'react-icons/fa'
+
 import Menu from './components/Menu'
 import {useRouter} from 'next/router'
 
@@ -193,7 +195,10 @@ function Hashtags() {
                                 <h3>Resposta</h3>
                                 <p>{itemDetail.answer === '' ? 'Aguardando resposta...' : itemDetail.answer}</p>
                             </div>
-                            <div className="data">{itemDetail.date}</div>
+                            <div className="data">{itemDetail.date} {itemDetail.hour}</div>
+                            <div style={{display: 'flex', flexDirection: 'row'}}>
+                                <FaHeart style= {{fontSize: '25px', cursor: 'pointer', color: 'gray'}}/> <p>{['oi', 'oi', 'oi'].map((item, index) => {return (index == 2 ? `${item}...` : `${item},`)})}</p>
+                            </div>
                         </div>  
                     </div>
                 )
