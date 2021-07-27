@@ -365,7 +365,7 @@ th label {
 .extra .extracontainer {
     margin:30px;
     margin-top: 70px;
-    min-height: 480px;
+    height: fit-content;
     background-color: #DBDBDB;
     box-shadow: 2px 2px 5px #3B3C40;
     border-radius: 5px;
@@ -787,6 +787,17 @@ button#bc:hover {
 .infoProfile {
   margin-top: auto;
   margin-bottom: auto;
+}
+
+.infoProfile div {
+    display: flex;
+    flex-direction: column;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.infoProfile div label {
+    font-weight: bold;
 }
 
 .teste {

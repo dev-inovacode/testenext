@@ -1,6 +1,7 @@
 import {useRouter} from 'next/router'
 import Cookie from 'js-cookie'
-import {BiLogOut} from 'react-icons/bi'
+import {BiLogIn, BiLogOut} from 'react-icons/bi'
+import {BsCalendar, BsExclamationDiamond} from 'react-icons/bs'
 import {FaUser, FaSlackHash} from 'react-icons/fa'
 import {GoGraph} from 'react-icons/go'
 import {RiTeamFill} from 'react-icons/ri'
@@ -10,7 +11,10 @@ function Menu() {
     
     function redirect(url) {
         const pages = [
+            '/login',
             '/profile',
+            '/daily',
+            '/pendencies',
             '/dashboards',
             '/members',
             '/',
@@ -29,11 +33,17 @@ function Menu() {
                 <p>InovaSup</p>
             </div>
             <ul>
-                {Cookie.get('userId') && Cookie.get('userId') != 'client' ? <li onClick={e => (redirect(e.target.value))} value="0"><FaUser className="icons"/> Perfil</li> : ''}
-                <li onClick={e => (redirect(e.target.value))} value="1"><GoGraph className="icons"/> Dashboards</li>
-                <li onClick={e => (redirect(e.target.value))} value="2"><RiTeamFill className="icons"/> Membros</li>
-                <li onClick={e => (redirect(e.target.value))} value="3"><FaSlackHash className="icons"/> Hashtags</li>
-                {Cookie.get('userId') && Cookie.get('userId') != 'client' ? <li onClick={e => (redirect(e.target.value))} value="4"><BiLogOut className="icons"/> Sair</li> : ''}
+                {Cookie.get('userId')?
+                    <li onClick={e => (redirect(e.target.value))} value="1"><FaUser className="icons"/> Perfil</li>
+                    :
+                    <li onClick={e => (redirect(e.target.value))} value="0"><BiLogIn className="icons"/> Login</li>
+                }
+                <li onClick={e => (redirect(e.target.value))} value="2"><BsCalendar className="icons"/> Daily</li>
+                <li onClick={e => (redirect(e.target.value))} value="3"><BsExclamationDiamond className="icons"/> Pendências</li>
+                <li onClick={e => (redirect(e.target.value))} value="4"><GoGraph className="icons"/> Dashboards</li>
+                <li onClick={e => (redirect(e.target.value))} value="5"><RiTeamFill className="icons"/> Membros</li>
+                <li onClick={e => (redirect(e.target.value))} value="6"><FaSlackHash className="icons"/> Hashtags</li>
+                {Cookie.get('userId') ? <li onClick={e => (redirect(e.target.value))} value="7"><BiLogOut className="icons"/> Sair</li> : ''}
             </ul>
         </div>
     )

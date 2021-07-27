@@ -24,13 +24,6 @@ function Hashtags() {
     const [itemDetail, setItemDetail] = useState({})
     
     const history = useRouter()
-    
-    useEffect(() => {
-        if(!(Cookie.get('userId'))) {
-            Cookie.set('userId', 'client')
-        }
-    }, [])
-
 
     useEffect(()=> {
         getTags()
@@ -135,34 +128,36 @@ function Hashtags() {
                                             (item.question.search(searchText) > -1)
                                         ){return item}
                                     }).map((item, index) => (
-                                        <tr key={index} onClick={e=> {
-                                            setItemDetail(item)
-                                            setKey(1)
-                                        }}>
-                                            <td>
+                                        <tr key={index}
+                                            onClick={e=> {
+                                                setItemDetail(item)
+                                                setKey(1)
+                                            }}
+                                        >
+                                            <th>
                                                 <label>Numero:</label>
                                                 <div>{item.number}</div>
                                                 <label>Grupo:</label>
                                                 <div>{item.group}</div>
-                                            </td>
-                                            <td>
+                                            </th>
+                                            <th>
                                                 <label>Pergunta</label>
                                                 <p>{item.question}</p>
                                                 <label>Resposta</label>
                                                 <p>{item.answer === '' ? 'Aguardando resposta...' : item.answer}</p>
-                                            </td>
-                                            <td>
+                                            </th>
+                                            <th>
                                                 <label>Hashtag</label>
                                                 <div>{item.type}</div>
                                                 <label>Status</label>
                                                 <div>{item.status.toUpperCase()}</div>
-                                            </td>
-                                            <td>
+                                            </th>
+                                            <th>
                                                 <label>Data</label>
                                                 <div>{item.date}</div>
                                                 <label>Horário</label>
                                                 <div>{item.hour}</div>
-                                            </td>
+                                            </th>
                                         </tr>
                                     ))}
                                 </tbody>
@@ -197,7 +192,7 @@ function Hashtags() {
                             </div>
                             <div className="data">{itemDetail.date} {itemDetail.hour}</div>
                             <div style={{display: 'flex', flexDirection: 'row'}}>
-                                <FaHeart style= {{fontSize: '25px', cursor: 'pointer', color: 'gray'}}/> <p>{['oi', 'oi', 'oi'].map((item, index) => {return (index == 2 ? `${item}...` : `${item},`)})}</p>
+                                <FaHeart style= {{fontSize: '25px', cursor: 'pointer', color: 'gray'}}/> <p>{['*', '*', '*'].map((item, index) => {return (index == 2 ? `${item}...` : `${item},`)})}</p>
                             </div>
                         </div>  
                     </div>

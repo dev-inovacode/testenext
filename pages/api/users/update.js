@@ -1,4 +1,3 @@
-import {Types} from 'mongoose'
 import dbConnect from '../dbConnect'
 import Users from '../models/UsersSchemas'
 
@@ -13,20 +12,16 @@ export default async (request, response) => {
     dt_reg += " " + ("0" + dt.getHours()).slice(-2) + ":" + ("0" +dt.getMinutes()).slice(-2)
     //para para deploy na vercel atraso de 3 horas
 
-    const user = await Users.create({
-      _id: new Types.ObjectId,
-      username: req.username,
-      name: req.name,
-      function: req.function,
-      email: req.email,
-      password: req.password,
-      foto: '',
-      phone: req.phone,
-      dt_reg: dt_reg,
-      in_resolution: 0,
-      closed: 0,
-      __v: 0
-    })
+    const user = await Users.findByIdAndUpdate(
+      req._id,
+      {$set:{
+        function: req.function,
+        email: req.email,
+        password: req.password,
+        phone: req.phone
+      }},
+      {new: true}
+    )
     
     return response.json(user)
   }

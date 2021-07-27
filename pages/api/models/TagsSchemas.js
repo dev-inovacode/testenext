@@ -8,7 +8,7 @@ const schema = new Schema({
     tags: String,
     __v: {type: Number, default: 0}
 }, {
-    timestamps: true
+    timestamps: false
 })
 
 export default mongoose.models[MODEL_NAME] || mongoose.model(MODEL_NAME, schema, "tagsschemas")

@@ -9,17 +9,13 @@ export default async (request, response) => {
     switch (type) {
         case 'weekResume':
             const items = await Question.find({ "type": { $ne: "SUGESTAO" } })
-
-            let dt = new Date()
-            dt.setHours(dt.getHours() - 3)
-            let dt_reg = ("0" + dt.getDate()).slice(-2) + "/" + ("0" + (dt.getMonth() + 1)).slice(-2) + "/" + dt.getFullYear()
-            //para para deploy na vercel atraso de 3 horas
-
+            
             let weekResume = []
-
-            for(let i = 40; i < 50; i++) {
+            
+            for(let i = 0; i < 7; i++) {
                 let dt = new Date()
                 dt.setHours(dt.getHours() - 3)
+                //para para deploy na vercel atraso de 3 horas
                 dt.setDate(dt.getDate() - i)
                 let dt_reg = ("0" + dt.getDate()).slice(-2) + "/" + ("0" + (dt.getMonth() + 1)).slice(-2) + "/" + dt.getFullYear()
 

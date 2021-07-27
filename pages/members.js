@@ -9,12 +9,6 @@ function Members() {
     const [members, setMembers] = useState([])
 
     useEffect(() => {
-        if(!(Cookie.get('userId'))) {
-            Cookie.set('userId', 'client')
-        }
-    }, [])
-
-    useEffect(() => {
         axios.get('/api/users/members', {}).then(
             response => {
                 setMembers(response.data)
@@ -37,8 +31,7 @@ function Members() {
                         {members.map((member, index) => (
                             <div key={index} className="infoProfile" style={{margin: '10px', width: '130px'}}>
                                 <img src='/userImg.png' alt="User" style={{width: '130px', height: '130px', borderRadius:'13px'}}/>
-                                {false ? <div>{member._id}</div> : ''}
-                                <div style={{whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'}}>{member.name}</div>
+                                <div style={{whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'}}>{member.name.split(' ')[0]}</div>
                                 <div style={{whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'}}>{member.function}</div>
                             </div>
                         ))}

@@ -13,6 +13,7 @@ export default async (request, response) => {
       _id: item._id,
       name: item.name,
       function: item.function,
+      password: item.password,
       email: item.email,
       phone: item.phone,
       in_resolution: item.in_resolution,

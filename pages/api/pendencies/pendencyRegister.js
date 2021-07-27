@@ -1,29 +1,35 @@
 import {Types} from 'mongoose'
 import dbConnect from '../dbConnect'
-import Questions from '../models/QuestionsSchemas'
+import Users from '../models/UsersSchemas'
+import Pendencies from '../models/PendenciesSchemas'
 
 export default async (request, response) => {
     dbConnect()
 
-    const {sugestion} = request.body
+    const {id, pendency} = request.body
 
     let dt = new Date()
     dt.setHours(dt.getHours() - 3)
     let dt_reg = ("0" + dt.getDate()).slice(-2) + "/" + ("0" + (dt.getMonth() + 1)).slice(-2) + "/" + dt.getFullYear()
     let hr_reg = ("0" + dt.getHours()).slice(-2) + ":" + ("0" +dt.getMinutes()).slice(-2)
-    // para deploy na vercel atraso de 3 horas
+    //para para deploy na vercel atraso de 3 horas
+    
+    const user = await Users.findOne({_id: id})
 
-    const itemsList = await Questions.create({
+    const pendencyItem = await Pendencies.create({
         _id: new Types.ObjectId,
-        answer: '',
-        number: 'BO',
-        question: sugestion,
-        group: 'BO',
+        responsible: {
+            _id: user._id,
+            name: user.name
+        },
+        pendency: pendency,
         date: dt_reg,
         hour: hr_reg,
-        type: 'SUGESTAO',
+        solved: false,
+        s_date: '',
+        s_hour: '',
         __v: 0
     })
 
-    response.json(itemsList)
+    response.json(pendencyItem)
 }

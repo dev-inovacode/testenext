@@ -9,6 +9,7 @@ export default async (request, response) => {
   const usersList = itemsList.map((item) => {
     return {
         _id: item._id,
+        foto: item.foto,
         name: item.name,
         function: item.function
     }

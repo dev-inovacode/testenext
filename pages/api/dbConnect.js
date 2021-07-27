@@ -6,7 +6,8 @@ export default async function dbConnect() {
     return mongoose.connect(process.env.MONGO_URL, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
-        useFindAndModify: true
+        useFindAndModify: false,
+        useCreateIndex: true
     })
 }
 

@@ -10,7 +10,7 @@ function Login() {
     const [passLogin, setPassLogin] = useState('')
     const [usernameRegister, setUsernameRegister] = useState('')
     const [nameRegister, setNameRegister] = useState('')
-    const [functionRegister, setFunctionRegister] = useState('')
+    const [functionRegister, setFunctionRegister] = useState('Atendimento Comercial')
     const [emailRegister, setEmailRegister] = useState('')
     const [phoneRegister, setPhoneRegister] = useState('')
     const [passRegister, setPassRegister] = useState('')
@@ -18,8 +18,33 @@ function Login() {
     
     const history = useRouter()
 
+    const functionList = [
+        'Atendimento Comercial',
+        'CEO',
+        'Consultor Comercial/Implantação',
+        'Consultora de Projetos',
+        'Consultoria Belt',
+        'Compras',
+        'Coordenador de Implantação',
+        'Coordenadora de Expedição - SP',
+        'Coordenador de Suporte',
+        'Customer Success',
+        'Desenvolvedor Júnior',
+        'Desenvolvedor Sênior',
+        'Estagiário de Engenharia',
+        'Gestor Comercial',
+        'Gestão e Processos',
+        'Gestor de Marketing e Parcerias',
+        'Impressões/Técnica de Suporte',
+        'Jurídico/Licitação',
+        'Parcerias e CRM',
+        'Secretário Executivo',
+        'Técnico de Suporte/Expedição - SC',
+        'Técnico de Suporte'
+    ]
+
     useEffect(()=> {
-        if((Cookie.get('userId') && Cookie.get('userId') != 'client')) {
+        if(Cookie.get('userId')) {
             history.push('/')
         }
     }, [])
@@ -115,16 +140,16 @@ function Login() {
                     <input
                         id="ul"
                         value={userLogin}
-                        onChange={e => setUserLogin(e.target.value)}
+                        onChange={e => {setUserLogin(e.target.value)}}
                     />
                     <label htmlFor="pl">Senha</label>
                     <input
                         id="pl"
                         type="password"
                         value={passLogin}
-                        onChange={e => setPassLogin(e.target.value)}
+                        onChange={e => {setPassLogin(e.target.value)}}
                     />
-                    <button id="bl" onClick={Log}>ACESSAR</button>
+                    <button id="bl" onClick={e=> {Log()}}>ACESSAR</button>
                 </div>
                 <div id="register" className="container">
                     <div className="title">
@@ -134,38 +159,37 @@ function Login() {
                     <input
                         id="uc"
                         value={usernameRegister}
-                        onChange={e => setUsernameRegister(e.target.value)}
+                        onChange={e => {setUsernameRegister(e.target.value)}}
                     />
                     <label htmlFor="nc">Nome</label>
                     <input
                         id="nc"
                         value={nameRegister}
-                        onChange={e => setNameRegister(e.target.value)}
+                        onChange={e => {setNameRegister(e.target.value)}}
                     />
                     <label htmlFor="fc">Função</label>
                     <select
                         id="fc"
                         value={functionRegister}
-                        onChange={e => setFunctionRegister(e.target.value)}
+                        onChange={e => {setFunctionRegister(e.target.value)}}
                     >
-                        <option value={'Atendimento'}>Atendimento</option>
-                        <option value={'Suporte'}>Suporte</option>
-                        <option value={'Implantação'}>Implantação</option>
-                        <option value={'Desenvolvimento'}>Desenvolvimento</option>
+                        {functionList.sort().map((item, index) => (
+                            <option key={index} value={item}>{item}</option>
+                        ))}
                     </select>
                     <label htmlFor="ec">E-mail</label>
                     <input
                         id="ec"
                         type="email"
                         value={emailRegister}
-                        onChange={e => setEmailRegister(e.target.value)}
+                        onChange={e => {setEmailRegister(e.target.value)}}
                     />
                     <label htmlFor="phc">Número de celular</label>
                     <InputMask
                         id="phc"
                         mask="(99) 99999-9999"
                         value={phoneRegister}
-                        onChange={e => setPhoneRegister(e.target.value)}
+                        onChange={e => {setPhoneRegister(e.target.value)}}
                     />
                     <div id="pass">
                         <div>
@@ -174,7 +198,7 @@ function Login() {
                               id="sc"
                               type="password"
                               value={passRegister}
-                              onChange={e => setPassRegister(e.target.value)}
+                              onChange={e => {setPassRegister(e.target.value)}}
                             />
                         </div>
                         <div>
@@ -183,11 +207,11 @@ function Login() {
                               id="rc"
                               type="password"
                               value={rpassRegister}
-                              onChange={e => setRPassRegister(e.target.value)}
+                              onChange={e => {setRPassRegister(e.target.value)}}
                             />
                         </div>
                     </div>
-                    <button id="bc" onClick={Reg}>CADASTRAR</button>
+                    <button id="bc" onClick={e=> {Reg()}}>CADASTRAR</button>
                 </div>
             </div>
         </div>
